@@ -1,4 +1,4 @@
-G8GateManual
+SandmanManual
 ============
 
-This is the manual for the G8 Gate VST/AU plug-in.
+This is the manual for the Sandman VST/AU plug-in by Unfiltered Audio.
