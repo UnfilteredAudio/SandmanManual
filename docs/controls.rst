@@ -6,30 +6,44 @@ Main Controls
 
 .. image:: /images/sandman.png
 
-**Analysis Gain**:
-Controls the amount of gain applied to the analyzed audio signal. The analyzed signal is considered separately from the outgoing signal in G8. Because of this, this control does not affect the amplitude of the signal that you can hear.
+**Delay Time**:
+Sets the length of Sandman's delay buffer. This ranges from 5 milliseconds to 5 seconds. This control is exponential to allow easy manipulation of smaller delay times.
 
-**Threshold**:
-Controls the level of the gate’s threshold. When this threshold is exceeded by the amplitude of the incoming audio, the gate will open and allow the audio to pass through. When the incoming audio is below the threshold value on the other hand, the gate will close. 
+**Sample Rate**:
+Controls the sampling rate of Sandman's DSP. Unlike "sample/bit crusher" effects, this control literally affects the speed of Sandman's audio processor. When dropping the sampling rate, you will hear a combination of pitch-warping and lo-fi signal degradation. Without any locks enabled, changing the sampling rate will change the effective size of the delay buffer. As an example, a 400 ms delay will loop every 800 ms when the sampling rate is at 50%. If locks are disabled, the delay time's value label will display the affected value.
 
-**Gate Meter**:
-A non-interactive component that displays the current value of the gate envelope. If you would like to see a more detailed history of the envelope’s value, you can click the “Display Options” button and enable the “Show Gate” parameter, which will then add the envelope to the waveform display. 
+**Tempo Sync**:
+Enables syncing of Sandman's delay time to your DAW's tempo. For instance, you can create 8th-note echoes perfectly in time with your project's tempo. "T" means "triplet", and "D" means "dotted". Please note that enabling tempo sync does not prevent the sampling rate from affecting the delay time. If you want the delay buffer to always be tempo synced, you must enable both Tempo Sync and Lock Delay Time. Also please note that Sandman's delay buffer size maxes out at 5 seconds at 100% sampling rate. If a specified time unit is longer than 5 seconds, Sandman will default to five seconds. You will only encounter this behavior at extremely slow tempos (Whole notes at 60 BPM would take four seconds, for instance).
 
-**Output Gain**:
-Controls the amount of gain applied to the outgoing signal from G8. This gain does not affect the analysis levels of the incoming audio.
+**Sleep**:
+Freezes the delay buffer. No new information will be written to the delay buffer. This effectively takes the contents of the delay buffer and forces it to loop until "Sleep" is disabled. Once slept, the loop is not affected by the "Filter" or "Feedback" controls, but will be affected by changes to the sampling rate.
 
-**RMS/Peak**:
-Selects the analysis type. Use “Peak” for more rapid analysis of signals with many transients (i.e. percussive signals).
+**Start/End**:
+These controls affect the start and end points of the frozen delay buffer. If locks are disabled, changing these points will affect the playback time of the frozen buffer.
 
-**Behavior Mode**:
-Selects the behavior of the gate envelope. Choose between “Regular Gating”, “One Shot”, and “Cycle”. Please see the section on “Alternate Gate Behaviors” for more info. 
+**Lock Delay Time**:
+This lock will force the delay buffer to remain the same size, no matter what the sampling rate is. As an example, a 400 ms delay buffer will still take 400 ms to loop, even at a 25% sampling rate. Use this lock if you would like to maintain a specific loop tempo, but want to explore unusual manipulations of the sampling rate.
 
-**Display Options**:
-Provides a menu to enable or disable the entire waveform display, or individual components of the waveform display. The three options can each be enabled/disabled individually: 
+**Lock Frozen Buffer**:
+This lock will force the frozen buffer to maintain its length, no matter where the start and end points are. As an example, a 400 ms delay buffer will always take 400 ms to complete, no matter where the start and end points are. As a side effect, moving the start and end points will affect the pitch of the frozen buffer. Enabling both locks and turning on a lot of modulation can result in some incredible, unusual effects. Try it out!
 
-- Show Input (Gray): Shows the input signal used to compare to the threshold value during analysis. 
-- Show Output (Red): Shows the output signal after the gating has been applied.
-- Show Gate (Black): Shows the normalized gating envelope as it is applied to the incoming signal. 
+**Dirt**:
+When enabled, this adds an amount of pink noise to the delay buffer depending on the sampling rate. At 100% sampling rate, this will add no noise. At lower sampling rates, this contributes to a lo-fi feeling. With high feedback and Dirt enabled, you can get a larger accumulation of noise in the buffer.
+
+**Feedback**:
+Affects the volume of the delay buffer written back into itself. Commonly, you would use this to control the number of echoes that you hear. With short delay times and high feedback, you can create unusual string-like sounds from percussive sources. Feedback doesn't affect anything while the delay buffer is in Sleep mode.
+
+**Filter**:
+Applies a low-pass filter to the feedback path. Use this to remove a build-up of hissy high frequencies, or to give the echoes an underwater or "room next door" type of feel.
+
+**Dry/Wet**:
+Control the balance between the unaffected "dry" signal and the delayed "wet" signal. Please note that the "gain" knobs do not affect the level of the dry signal.
+
+**In Gain**:
+Boosts the level of the audio being written to the delay buffer.
+
+**Out Gain**:
+Boosts the level of the output of the delay buffer.
 
 
 Modulation Controls
@@ -37,26 +51,17 @@ Modulation Controls
 
 .. image:: /images/sandmanmod.png
 
-**Attack**:
-Controls the amount of time it takes for the gate to open to maximum amplitude after the incoming audio goes above the threshold. Extremely short values (< ~10 ms) can result in clicks, due to the rapid change in amplitude.
+To access the modulation menu, click the arrow on the bottom left corner of Sandman.
 
-**Hold**:
-Controls the amount of time that the gate is required to stay at maximum amplitude for. If the incoming audio drops below the hysteresis point before the hold stage is finished, the hold stage will complete before the release stage begins.
+The modulation menu contains two LFO's with the following waveforms:
 
-**Release**:
-Controls the amount of time that it takes for the gate to go from maximum amplitude to minimum amplitude. This stage occurs after the incoming audio drops below hysteresis, and after the hold stage is completed.
+- Sine
+- Triangle
+- Saw Up
+- Saw Down
+- Sample & Hold
 
-**Reduction**:
-Controls the amount of gain removed from the audio signal when the gate is closed. This effectively sets a minimum amplitude for the gate envelope.
+Each LFO is unipolar, meaning that they provide one direction of modulation only. Five sliders on each LFO allow you to set modulation destinations and depths. The center of each slider is the current knob value for each modulation destination. The LFO can add either a positive or negative modulation amount to that value.
 
-**Hysteresis**:
-Controls the hysteresis point, often referred to as the “bottom threshold”. The audio signal must drop below this bottom threshold before the gate can close.
-
-**Dry/Wet**:
-Controls the balance between the “dry” (unaffected) incoming signal, and the “wet” (affected) outgoing signal. Please keep in mind that the “dry” signal is delayed by the Lookahead value, meaning that it is not a truly bypassed signal. This was done so that the wet and dry signals maintain the same phase.
-
-**Lookahead**:
-Delays the signal by a chosen amount to allow the gate’s analysis stage to better predict incoming transients.
-
-**Delay**:
-This control is only active when “Cycle” mode is selected (Please see the section on “Alternate Gate Behaviors”). Controls the length of silence inserted between envelope cycles. 
+**Sync**:
+Turns on Tempo Sync for the LFO. When Tempo Sync is on, the rate of the LFO is locked and will not be affected by the Sample Rate. When the LFO is not tempo synced, its speed will be affected by the Sample Rate.
