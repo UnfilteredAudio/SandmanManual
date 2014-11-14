@@ -6,7 +6,7 @@
 Sandman by Unfiltered Audio
 ===========================
 
-Welcome to the Sandman manual! If you are reading this as a PDF, you can find our online version at http://g8-gate.readthedocs.org/
+Welcome to the Sandman manual! If you are reading this as a PDF, you can find our online version at http://sandmanplugin.readthedocs.org/
 
 This is the open-source manual for Sandman, a VST/AU plug-in by Unfiltered Audio. If you find any typos, or want to add information, feel free to modify it on Github and send us a pull request.
 
@@ -19,8 +19,6 @@ Contents:
   introduction
   gettingstarted
   controls
-  modes
-  recipes
   credits
 
 

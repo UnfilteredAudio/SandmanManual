@@ -1,10 +1,10 @@
 Controls
 ========
 
-Gains and Display
+Main Controls
 -----------------
 
-.. image:: /images/interface/g8mainrow.png
+.. image:: /images/sandman.png
 
 **Analysis Gain**:
 Controls the amount of gain applied to the analyzed audio signal. The analyzed signal is considered separately from the outgoing signal in G8. Because of this, this control does not affect the amplitude of the signal that you can hear.
@@ -32,10 +32,10 @@ Provides a menu to enable or disable the entire waveform display, or individual 
 - Show Gate (Black): Shows the normalized gating envelope as it is applied to the incoming signal. 
 
 
-Gate Controls
+Modulation Controls
 -------------
 
-.. image:: /images/interface/g8controlrow.png
+.. image:: /images/sandmanmod.png
 
 **Attack**:
 Controls the amount of time it takes for the gate to open to maximum amplitude after the incoming audio goes above the threshold. Extremely short values (< ~10 ms) can result in clicks, due to the rapid change in amplitude.
@@ -60,35 +60,3 @@ Delays the signal by a chosen amount to allow the gate’s analysis stage to bet
 
 **Delay**:
 This control is only active when “Cycle” mode is selected (Please see the section on “Alternate Gate Behaviors”). Controls the length of silence inserted between envelope cycles. 
-
-
-Advanced Controls (Bottom Left)
---------------------
-
-.. image:: /images/interface/g8bottomleft.png
-
-**Channels Display**:
-Displays how many channels your host currently supports. This number is equal to the number of input channels. You can use this for troubleshooting your setup.
-
-**Expert Mode**:
-Toggles whether or not Expert Mode is active. For more information, please see the section on “Expert Mode”.
-
-**Flip Mode**:
-Toggles whether the primary outputs and reject outputs are swapped. For more information and techniques, check out “Reject Outputs” and “Flip Mode.”
-
-
-MIDI Controls (Bottom Right)
----------------------
-
-.. image:: /images/interface/g8bottomright.png
-
-**MIDI**:
-Toggles whether G8’s MIDI inputs and outputs are active. When this toggle is de-activated G8 will not send or receive MIDI notes. 
-
-**In**:
-The MIDI input section has a display lamp that will light up any time G8 detects a matching incoming MIDI note. The left and right arrows are used to change which note G8 will look for to activate this trigger. 
-
-**Out**:
-The MIDI output section has a display lamp that will light up any time G8 is sending MIDI output. The left and right arrows are used to change which note G8 will use to send triggers.  
-
-For more information, please see the section on “MIDI”.

@@ -1,7 +1,7 @@
 Introduction
 ============
 
-.. image:: /images/g8master.png
+.. image:: /images/sandman.png
 
 Sandman is a delay and loop-mangler capable of creating beautiful, evolving ambient textures or busy, hyper-stuttered glitch beats.
 
